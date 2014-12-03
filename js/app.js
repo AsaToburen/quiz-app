@@ -1,12 +1,10 @@
 
-
 var question1 = {
   questionText : "What percentage of the earth's water is fresh water?",
   answerA : "7%",
   answerB : "12%",
   answerC : "9%", 
   answerD : "3%",
-    correct: 1
 }
 
 var question2 = {
@@ -38,7 +36,6 @@ var question5 = {
   answerB : "84.7%",
   answerC : "65.2%",
   answerD : "86%",
-
 }
 
 var questionArray = [question1, question2, question3, question4, question5];
@@ -55,7 +52,15 @@ var answerEl3 = document.getElementById('a3');
 var answerEl4 = document.getElementById('a4');
 
 
-
+var checkAnswer = function (userAnswer) {
+  if (userAnswer == correctAnswerArray[questionNum]) {
+     userScore++;
+     console.log("userscore", userScore);
+     console.log(correctAnswerArray);
+}
+   questionNum++;
+   nextQuestion();
+ }
 
 var nextQuestion = function () {  
   questionElement.innerHTML = questionArray[questionNum].questionText;
@@ -65,48 +70,22 @@ var nextQuestion = function () {
    answerEl4.innerHTML = questionArray[questionNum].answerD;
     var answerElements = [answerEl1, answerEl2, answerEl3, answerEl4];
     var answerElementsLength = answerElements.length;
-    
-    console.log(answerElements);
-
-    for (var i = 0; i < answerElementsLength; i++) {
-      answerElements[i].addEventListener('click', bindClick(i));
-}
-
-  function bindClick(i) {
-    return function(){
-      userAnswerArray.push(this.innerHTML);
-        	preventDefault();
-      var userAnswer = this.innerHTML;
-      console.log(userAnswerArray);
-      console.log(correctAnswerArray);
-
-  if (userAnswer == correctAnswerArray[questionNum]) {
-      userScore++;
-      //alert user
-    }
-    questionNum++;
-    nextQuestion();
-
   };
-  };
-  };
+
+  document.getElementById('questionArea').addEventListener('click', function(e) {
+        console.log(e.toElement.innerHTML);
+        var userAnswer = e.toElement.innerHTML;
+        userAnswerArray.push(userAnswer);
+        console.log(userAnswerArray);
+        checkAnswer(userAnswer);
+}, false);
+
 
 //starts quiz after button is clicked//
 document.getElementById('btn').addEventListener("click", function(){
   document.getElementById('btn').remove();
   nextQuestion();
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
