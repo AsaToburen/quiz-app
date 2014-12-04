@@ -41,7 +41,7 @@ button {
 
 /* QUESTION PAGE STYLES */
 
-#question {
+#questionArea {
   text-align: left;
   line-height: 1.7em;
   font-size: 1em;
@@ -49,42 +49,89 @@ button {
   margin-top: 1em;
 }
 
-#question li {
+#questionText{
+  font-size: 1em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+#questionArea p {
   width: 85%;
   height: 2em;
   padding-left: 15px;
   border-bottom: 1px solid black;
   list-style-type: none;
+  display: none;
 }
 
-#question li:hover {
+#questionArea p:hover {
   background-color: rgba(0, 98, 182, 0.3);
   border-radius: 1.5em;
   font-weight: 700;
+  display: none;
 }
 
-#question li:active {
+#questionArea p:active {
   background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+#drops img {
+  position: relative;
+  bottom: -.6em; 
+  margin-right: .5em;   
+  display: inline-block;
+}
+
+#quiz-counter {
+  position: absolute;
+  right: .5em;
+  bottom: .5em;
 }
 
 /* END PAGE STYLES */
-#end div {
-  display: inline-block;
-  text-align: left;
-  margin-top: 1em;
+#results {
+ display: none;
 }
 
-#end div h2 {
+#results {
+  line-height: 1.7em;
+  font-size: 1em;
+}
+
+#results h2 {
+  display: inline-block;
   font-size: 1.2em;
-  padding-top: .2em;
-  background-color: rgba(0, 0, 0, 0.3);
+  padding-left: 1em;
+  margin-right: 4em;
+  margin-top: 2em;
+  line-height: 0; 
 }
 
-#end  h2 {
-  display: inline-block;
-  margin: 0em;
+
+
+#userResults, #answerKey {
+  height: 2em;
+  
 }
 
-#end li {
-    margin: 1em 2.5em;
+#answerKey{
+  float: right;
+  margin-top: .5em;
+  padding-right: 6em;
+  text-align: left;
 }
+
+#userResults{
+  float: left;
+   margin-top: .5em;
+  padding-left: 6em;
+  text-align: left;
+}
+
+
+
+
+
+
+

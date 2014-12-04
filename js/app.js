@@ -38,31 +38,76 @@ var question5 = {
   answerD : "86%",
 }
 
-var questionArray = [question1, question2, question3, question4, question5];
-var correctAnswerArray = [question1.answerA, question2.answerB, question3.answerC, question4.answerA, question5.answerA];
-var userAnswerArray = [];
-var questionNum = 0;
-var userScore = 0;
-
 
 var questionElement = document.getElementById('questionText');
 var answerEl1 = document.getElementById('a1');
 var answerEl2 = document.getElementById('a2');
 var answerEl3 = document.getElementById('a3');
 var answerEl4 = document.getElementById('a4');
+var answerEl5 = document.getElementById('a5');
 
+var questionArray = [question1, question2, question3, question4, question5];
+var correctAnswerArray = [question1.answerD, question2.answerB, question3.answerC, question4.answerA, question5.answerA];
+var userAnswerArray = [];
+var questionNum = 0;
+var userScore = 0;
+
+function counter(){
+	var counterVar = 1;
+	document.getElementById('quiz-counter').innerHTML = questionNum + counterVar + " of 5";
+};
+
+function getScore() {
+	document.getElementById('title').innerHTML = "Your Score: " + (userScore/5)*100 + "%";
+};
+
+function results() {
+	getScore();
+	$('#results').show();
+	$('#questionArea').hide();
+	$('#questionText').hide();
+
+
+//Needs refactoring but adds user answers to ordered list
+
+var textIn = "";
+for (var i =0; i < userAnswerArray.length; i++) {
+    textIn += "<li>" + userAnswerArray[i]+ "</li>";
+}
+document.getElementById("userResults").innerHTML = textIn;
+
+//Also needs refactoring. Adds correct answers to ordered list.
+var answersIn = "";
+for (var i =0; i < correctAnswerArray.length; i++) {
+    answersIn += "<li>" + correctAnswerArray[i]+ "</li>";
+}
+document.getElementById("answerKey").innerHTML = answersIn;
+	console.log('results');
+};
+
+//check to see if user answer matches correct answer
 
 var checkAnswer = function (userAnswer) {
   if (userAnswer == correctAnswerArray[questionNum]) {
-     userScore++;
+     userScore++,
      console.log("userscore", userScore);
      console.log(correctAnswerArray);
 }
-   questionNum++;
-   nextQuestion();
- }
 
-var nextQuestion = function () {  
+//Increament Question
+ questionNum++;
+
+
+  if (questionNum < 5) {
+	nextQuestion(); }
+  else {
+   results();
+ };
+};
+
+//Load next question
+
+var nextQuestion = function () { 
   questionElement.innerHTML = questionArray[questionNum].questionText;
    answerEl1.innerHTML = questionArray[questionNum].answerA;
    answerEl2.innerHTML = questionArray[questionNum].answerB;
@@ -70,6 +115,7 @@ var nextQuestion = function () {
    answerEl4.innerHTML = questionArray[questionNum].answerD;
     var answerElements = [answerEl1, answerEl2, answerEl3, answerEl4];
     var answerElementsLength = answerElements.length;
+    counter();
   };
 
   document.getElementById('questionArea').addEventListener('click', function(e) {
@@ -80,16 +126,11 @@ var nextQuestion = function () {
         checkAnswer(userAnswer);
 }, false);
 
-
 //starts quiz after button is clicked//
 document.getElementById('btn').addEventListener("click", function(){
   document.getElementById('btn').remove();
+  $('#questionArea p').show();
   nextQuestion();
 });
-
-
-
-
-
 
 
