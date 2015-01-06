@@ -14,29 +14,38 @@ section {
   margin: 4.5em auto;
   border-radius: 2em;
   background-clip: padding-box;
-  background-image: url(../images/green_cup.png);
+  background-color: #F1F1F1;
   border: 20px solid rgba(0, 0, 0, 0.3);
 }
 
 /* FRONT PAGE STYLES */
 
 button {
-  width: 7em;
+  width: 37em;
   height: 5em;
   position: absolute;
   bottom: 3em;
   right: 4.0em;
   border-radius: 3px;
+  border: none;
+  background: #428BCA;
+  opacity: .5;
 }
 
 .title {
   font-size: 2em;
-  padding-top: .5em;
+  padding: .5em;
   width: 80%;
-  height: 1.5em;
-  background-color: rgba(0, 0, 0, 0.3);
+  height: 1em;
+  background: #428BCA;
+  margin: .4em auto;
+  color: #dedede;
+}
+
+#penguin {
+  display: block;
+  width: 50%;
   margin: 0 auto;
-  margin-top: 1em;
 }
 
 /* QUESTION PAGE STYLES */
@@ -66,9 +75,9 @@ button {
 
 #questionArea p:hover {
   background-color: rgba(0, 98, 182, 0.3);
-  border-radius: 1.5em;
   font-weight: 700;
   display: none;
+  cursor: pointer;
 }
 
 #questionArea p:active {
